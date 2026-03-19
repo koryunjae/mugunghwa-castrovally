@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mugunghwa Korean Restaurant</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --brown:#5C2D0A;--brown-light:#7A3D12;--brown-pale:#F5EDE4;
+  --brown-mid:#C4895A;--gold:#B8860B;--gray:#6B6B6B;--light:#FAF7F4;
+}
+body{font-family:'Georgia',serif;color:#2C1810;background:#fff;}
+a{text-decoration:none;color:inherit;}
+
+nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.97);border-bottom:1px solid #e8ddd5;z-index:100;padding:0 5%;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;}
+.nav-logo{display:flex;align-items:center;gap:12px;}
+.nav-logo img{height:48px;width:48px;object-fit:contain;}
+.nav-logo-text .n1{display:block;font-size:17px;color:var(--brown);letter-spacing:2px;}
+.nav-logo-text .n2{display:block;font-size:10px;color:var(--brown-mid);letter-spacing:3px;text-transform:uppercase;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);opacity:0.8;transition:opacity 0.2s;}
+.nav-links a:hover{opacity:1;}
+.nav-cta{background:var(--brown);color:#fff;padding:10px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.2s;}
+.nav-cta:hover{background:var(--brown-light);}
+
+.hero{height:100vh;background:linear-gradient(135deg,#2C1810 0%,#5C2D0A 50%,#8B4513 100%);display:flex;align-items:center;justify-content:center;text-align:center;}
+.hero-content{position:relative;z-index:2;}
+.hero-logo-wrap{width:140px;height:140px;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;}
+.hero-logo-wrap img{width:130px;height:130px;object-fit:contain;filter:brightness(0) saturate(100%) invert(72%) sepia(30%) saturate(500%) hue-rotate(5deg) brightness(90%);}
+.hero h1{font-size:clamp(42px,7vw,80px);color:#fff;letter-spacing:8px;font-weight:400;margin-bottom:8px;}
+.hero-sub{color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:4px;text-transform:uppercase;}
+.hero-divider{width:60px;height:1px;background:var(--gold);margin:18px auto;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:var(--gold);color:#fff;padding:14px 36px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;font-family:inherit;}
+.btn-primary:hover{background:#9A7209;}
+.btn-outline{background:transparent;color:#fff;padding:14px 36px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.5);cursor:pointer;font-family:inherit;}
+.btn-outline:hover{border-color:#fff;}
+
+section{padding:80px 5%;}
+.section-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--brown-mid);margin-bottom:12px;}
+.section-title{font-size:clamp(26px,4vw,42px);color:var(--brown);font-weight:400;letter-spacing:2px;margin-bottom:18px;}
+.gold-line{width:50px;height:2px;background:var(--gold);margin-bottom:32px;}
+
+/* ABOUT */
+.about{background:var(--light);}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-visual{background:var(--brown-pale);height:380px;display:flex;align-items:center;justify-content:center;}
+.about-visual img{width:200px;height:200px;object-fit:contain;}
+.about p{font-size:16px;line-height:1.9;color:#4A3728;margin-bottom:16px;}
+.about-quote{border-left:3px solid var(--gold);padding-left:20px;font-style:italic;font-size:17px;color:var(--brown);margin:24px 0;}
+
+/* MENU */
+.menu{background:#fff;}
+.menu-inner{max-width:1200px;margin:0 auto;}
+.menu-tabs{display:flex;flex-wrap:wrap;gap:0;margin-bottom:40px;border-bottom:1px solid #e8ddd5;}
+.tab{padding:10px 18px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border:none;background:transparent;color:var(--gray);font-family:inherit;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;}
+.tab.active{color:var(--brown);border-bottom-color:var(--brown);}
+.menu-section{display:none;}
+.menu-section.active{display:block;}
+.menu-cat-title{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--brown-mid);margin:28px 0 16px;padding-bottom:8px;border-bottom:1px solid #e8ddd5;}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:8px;}
+.menu-card{border:1px solid #e8ddd5;padding:20px;transition:border-color 0.2s;}
+.menu-card:hover{border-color:var(--brown-mid);}
+.menu-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px;}
+.menu-name{font-size:15px;color:var(--brown);font-weight:400;}
+.menu-price{color:var(--gold);font-size:14px;font-weight:600;white-space:nowrap;}
+.menu-korean{font-size:12px;color:var(--brown-mid);margin-bottom:6px;}
+.menu-desc{font-size:12px;color:var(--gray);line-height:1.6;}
+.menu-note{font-size:11px;color:var(--brown-mid);margin-top:6px;font-style:italic;}
+.menu-notice{font-size:12px;color:var(--gray);margin-top:24px;padding:16px;border:1px solid #e8ddd5;line-height:1.7;}
+
+/* ORDER */
+.order{background:var(--brown-pale);}
+.order-inner{max-width:1000px;margin:0 auto;}
+.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.order-items{display:flex;flex-direction:column;gap:10px;}
+.order-item{background:#fff;border:1px solid #e8ddd5;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;}
+.order-item-info .name{font-size:14px;color:var(--brown);}
+.order-item-info .price{font-size:12px;color:var(--gold);margin-top:2px;}
+.qty-ctrl{display:flex;align-items:center;gap:8px;}
+.qty-btn{width:26px;height:26px;border:1px solid var(--brown-mid);background:transparent;cursor:pointer;font-size:16px;color:var(--brown);display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.qty-btn:hover{background:var(--brown);color:#fff;}
+.qty-num{font-size:14px;min-width:18px;text-align:center;color:var(--brown);}
+.cart-panel{background:#fff;border:1px solid #e8ddd5;padding:24px;height:fit-content;position:sticky;top:90px;}
+.cart-title{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid #e8ddd5;}
+.cart-list{min-height:80px;margin-bottom:18px;}
+.cart-row{display:flex;justify-content:space-between;font-size:13px;color:#4A3728;padding:5px 0;border-bottom:1px solid #f0e8e0;}
+.cart-empty{font-size:13px;color:var(--gray);text-align:center;padding:20px 0;}
+.cart-total{display:flex;justify-content:space-between;font-size:14px;color:var(--brown);font-weight:600;padding-top:12px;border-top:1px solid #e8ddd5;}
+.btn-order{width:100%;background:var(--brown);color:#fff;padding:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;margin-top:16px;font-family:inherit;}
+.btn-order:hover{background:var(--brown-light);}
+
+/* RESERVATION */
+.reservation{background:#fff;}
+.res-inner{max-width:700px;margin:0 auto;text-align:center;}
+.res-inner .gold-line{margin:0 auto 32px;}
+.form-group{margin-bottom:18px;text-align:left;}
+.form-group label{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-mid);margin-bottom:7px;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1px solid #e8ddd5;font-family:inherit;font-size:14px;color:#2C1810;background:#fff;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--brown);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.form-group textarea{height:90px;resize:vertical;}
+.btn-submit{background:var(--brown);color:#fff;padding:14px 48px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;font-family:inherit;margin-top:8px;}
+.btn-submit:hover{background:var(--brown-light);}
+.success-msg{display:none;background:var(--brown-pale);border:1px solid var(--brown-mid);padding:18px;text-align:center;font-size:14px;color:var(--brown);margin-top:14px;}
+
+/* LOCATION */
+.location{background:var(--light);}
+.loc-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.loc-map{background:#e8ddd5;height:300px;display:flex;align-items:center;justify-content:center;}
+.map-pin{width:36px;height:36px;background:var(--brown);border-radius:50% 50% 50% 0;transform:rotate(-45deg);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;}
+.map-pin-dot{width:14px;height:14px;background:#fff;border-radius:50%;}
+.map-text{font-size:13px;color:var(--brown);letter-spacing:1px;text-align:center;}
+.loc-info h3{font-size:18px;color:var(--brown);font-weight:400;letter-spacing:1px;margin-bottom:18px;}
+.info-block{margin-bottom:22px;}
+.info-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-mid);margin-bottom:5px;}
+.info-value{font-size:14px;color:#4A3728;line-height:1.8;}
+.hours-row{display:flex;justify-content:space-between;font-size:14px;color:#4A3728;padding:5px 0;border-bottom:1px solid #e8ddd5;}
+.hours-row:last-child{border-bottom:none;}
+.hours-row .day{color:var(--brown);}
+
+footer{background:var(--brown);color:rgba(255,255,255,0.85);text-align:center;padding:40px 5%;}
+footer .f-logo{font-size:22px;letter-spacing:6px;color:#fff;margin-bottom:4px;}
+footer .f-sub{font-size:11px;letter-spacing:3px;color:rgba(255,255,255,0.5);}
+footer .f-divider{width:40px;height:1px;background:var(--gold);margin:18px auto;}
+footer p{font-size:12px;letter-spacing:1.5px;margin-bottom:5px;}
+footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-top:14px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img id="nav-logo" src="" alt="Mugunghwa"/>
+      <div class="nav-logo-text">
+        <span class="n1">MUGUNGHWA</span>
+        <span class="n2">Korean Restaurant</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#order">Order</a></li>
+      <li><a href="#reservation">Reserve</a></li>
+      <li><a href="#location">Visit</a></li>
+    </ul>
+    <button class="nav-cta" onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">Reserve a Table</button>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-logo-wrap"><img id="hero-logo" src="" alt="Mugunghwa"/></div>
+    <h1>MUGUNGHWA</h1>
+    <div class="hero-sub">Korean Restaurant</div>
+    <div class="hero-divider"></div>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">Reserve a Table</button>
+      <button class="btn-outline" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">View Menu</button>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title">A Journey of Flavors</h2>
+      <div class="gold-line"></div>
+      <p>Named after Korea's national flower, the Rose of Sharon, Mugunghwa brings the soul of traditional Korean cuisine to the heart of America. Every dish is a celebration of centuries-old recipes passed down through generations.</p>
+      <div class="about-quote">"Food is not just nourishment — it is memory, culture, and love on a plate."</div>
+      <p>We source only the finest seasonal ingredients, crafting each plate with the meticulous care that defines true Korean culinary artistry. From our hand-fermented kimchi to our slow-braised galbi, every bite tells a story.</p>
+    </div>
+    <div class="about-visual"><img id="about-logo" src="" alt="Mugunghwa"/></div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="menu-inner">
+    <div style="text-align:center;margin-bottom:40px;">
+      <p class="section-label">Culinary Offerings</p>
+      <h2 class="section-title">Our Menu</h2>
+      <div class="gold-line" style="margin:0 auto;"></div>
+    </div>
+    <div class="menu-tabs">
+      <button class="tab active" onclick="switchTab('appetizer',this)">Appetizer</button>
+      <button class="tab" onclick="switchTab('rice',this)">Rice</button>
+      <button class="tab" onclick="switchTab('creamy',this)">Creamy Soup</button>
+      <button class="tab" onclick="switchTab('clear',this)">Clear Soup</button>
+      <button class="tab" onclick="switchTab('tofu',this)">Soft Tofu Soup</button>
+      <button class="tab" onclick="switchTab('noodle',this)">Noodle</button>
+      <button class="tab" onclick="switchTab('house',this)">House Specials</button>
+      <button class="tab" onclick="switchTab('bbq',this)">BBQ</button>
+      <button class="tab" onclick="switchTab('korean',this)">Korean Favorites</button>
+    </div>
+
+    <!-- APPETIZER -->
+    <div id="appetizer" class="menu-section active">
+      <div class="menu-grid">
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Dumpling 만두</span><span class="menu-price">$14</span></div><div class="menu-desc">Pork (5pcs) / Kimchi (5pcs) / Vegetables (10pcs). Steam or Fried dumpling.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Japchae 잡채</span><span class="menu-price">$16</span></div><div class="menu-desc">Glass noodles with vegetable, egg, and protein. Beef or Tofu.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Yukhoe 육회</span><span class="menu-price">$30</span></div><div class="menu-desc">Seasoned raw beef with egg yolk and apple.</div><div class="menu-note">* Raw meat</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Green Onion Pancake 파전</span><span class="menu-price">$18</span></div><div class="menu-desc">Crispy Korean pancake with fresh green onions.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Chives Pancake 부추전</span><span class="menu-price">$20</span></div><div class="menu-desc">Crispy Korean pancake with chives.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Seafood Pancake 해물파전</span><span class="menu-price">$22</span></div><div class="menu-desc">Crispy Korean pancake loaded with fresh seafood.</div></div>
+      </div>
+    </div>
+
+    <!-- RICE -->
+    <div id="rice" class="menu-section">
+      <p class="menu-cat-title">Dolsot Bibimbap</p>
+      <div class="menu-grid">
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Galbi 갈비비빔밥</span><span class="menu-price">$23 / $41</span></div><div class="menu-desc">Short rib beef. Stone pot rice with choice of protein, vegetables, and egg.</div><div class="menu-note">+ Thick Soybean Paste Stew +$5 · M BBQ COMBO Galbi (+$5) or Half Mackerel</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Bulgogi 불고기비빔밥</span><span class="menu-price">$18 / $36</span></div><div class="menu-desc">Sliced beef marinated in sweet soy sauce.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Pork Bulgogi 돼지불고기비빔밥</span><span class="menu-price">$18 / $36</span></div><div class="menu-desc">Sliced pork marinated in sweet soy sauce.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Spicy Pork 제육비빔밥</span><span class="menu-price">$18 / $36</span></div><div class="menu-desc">Sliced pork marinated in gochujang sauce.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Chicken 치킨비빔밥</span><span class="menu-price">$18 / $36</span></div><div class="menu-desc">Stone pot rice with seasoned chicken, vegetables, and egg.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Spicy Chicken 매운치킨비빔밥</span><span class="menu-price">$18 / $36</span></div><div class="menu-desc">Stone pot rice with spicy chicken, vegetables, and egg.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Seafood 해물비빔밥</span><span class="menu-price">$21 / $39</span></div><div class="menu-desc">Stone pot rice with assorted seafood, vegetables, and egg.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Tofu 두부비빔밥</span><span class="menu-price">$18 / $36</span></div><div class="menu-desc">Stone pot rice with tofu, vegetables, and egg.</div></div>
+      </div>
+      <p class="menu-cat-title">Yukhoe Bibimbap</p>
+      <div class="menu-grid">
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Yukhoe Bibimbap 육회비빔밥</span><span class="menu-price">$23 / $41</span></div><div class="menu-desc">Rice topped with seasoned raw beef, vegetables, and egg yolk.</div><div class="menu-note">* Raw meat</div></div>
+      </div>
+      <p class="menu-cat-title">Extras</p>
+      <div class="menu-grid">
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Stone Pot Rice (purple rice) 돌솥밥</span><span class="menu-price">$4</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">White Rice 공기밥</span><span class="menu-price">$2</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Vegetables 쌈</span><span class="menu-price">$3</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Thick Soy Bean Paste Stew 강된장</span><span class="menu-price">$10</span></div></div>
+      </div>
+    </div>
+
+    <!-- CREAMY SOUP -->
+    <div id="creamy" class="menu-section">
+      <div class="menu-grid">
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Seollongtang 설렁탕</span><span class="menu-price">$20–$42</span></div><div class="menu-korean">Royal Brisket $20/38 · Flank $18/36 · Banana Shank $20/38 · Beef Knee $24/42 · Assorted $22/40</div><div class="menu-desc">Traditional Korean house-made beef bone soup simmered for 24 hours to create a rich, milky broth.</div><div class="menu-note">M BBQ COMBO: Galbi (+$5) or Half Mackerel</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Royal Brisket Seollongtang 차돌설렁탕</span><span class="menu-price">$20 / $38</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Flank Seollongtang 양지설렁탕</span><span class="menu-price">$18 / $36</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Banana Shank Seollongtang 아롱사태설렁탕</span><span class="menu-price">$20 / $38</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Beef Knee Seollongtang 도가니설렁탕</span><span class="menu-price">$24 / $42</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Assorted Seollongtang 섞어설렁탕</span><span class="menu-price">$22 / $40</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Spicy Seollongtang 얼큰설렁탕</span><span class="menu-price">$20 / $38</span></div><div class="menu-desc">Spicy house-made beef soup with shredded, taro stem, vegetables, egg, and glass noodles.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Yukgaejang 육개장</span><span class="menu-price">$22 / $40</span></div><div class="menu-desc">Spicy house-made beef soup with shredded, taro stem, vegetables, egg, and glass noodles.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Dulkkae Haejangguk 들깨해장국</span><span class="menu-price">$23 / $41</span></div><div class="menu-desc">Perilla seed soup with beef and vegetables.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Bone Haejangguk 뼈해장국</span><span class="menu-price">$23 / $41</span></div><div class="menu-desc">Spicy house-made pork bone soup with potatoes, perilla, and vegetables.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Gamjatang 감자탕</span><span class="menu-price">$60</span></div><div class="menu-desc">Spicy house-made pork back bone soup with potatoes, perilla leaves, and vegetables. Ideal for sharing.</div><div class="menu-note">Fried rice available upon request.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Mandu & Rice Cake Soup 떡만두국</span><span class="menu-price">$20 / $38</span></div><div class="menu-desc">Dumpling soup and rice cake in house-made beef broth.</div></div>
+      </div>
+    </div>
+
+    <!-- CLEAR SOUP -->
+    <div id="clear" class="menu-section">
+      <div class="menu-grid">
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Galbi Tang 갈비탕</span><span class="menu-price">$25 / $43</span></div><div class="menu-desc">Marinated beef short rib soup in house-made rich broth.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Premium Galbi Tang 프리미엄갈비탕</span><span class="menu-price">$30 / $48</span></div><div class="menu-desc">Rich house-made beef short rib soup with marinated ribs, abalone, shrimp, and octopus.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Naju Gomtang 나주곰탕</span><span class="menu-price">$20 / $38</span></div><div class="menu-desc">Rich house-made beef soup with sliced beef and glass noodles.</div></div>
+      </div>
+    </div>
+
+    <!-- SOFT TOFU SOUP -->
+    <div id="tofu" class="menu-section">
+      <div class="menu-grid">
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Soft Tofu Soup 순두부</span><span class="menu-price">$18 / $36</span></div><div class="menu-desc">Served with silky soft tofu, vegetables, and choice of protein in a spicy broth.</div><div class="menu-note">Choice of protein: Dumpling, Mushroom, Beef, Pork, Assorted +$3, Seafood +$2. Spiciness: Plain / Mild / Medium / Spicy / Danger. Vegetable broth and egg available upon request.</div></div>
+      </div>
+    </div>
+
+    <!-- NOODLE -->
+    <div id="noodle" class="menu-section">
+      <div class="menu-grid">
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Naeng Myun 냉면</span><span class="menu-price">$18 / $36</span></div><div class="menu-desc">Traditional cold buckwheat noodles in house-made beef broth with sliced beef.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Bibim Naeng Myun 비빔냉면</span><span class="menu-price">$18 / $36</span></div><div class="menu-desc">Spicy cold buckwheat noodles mixed with house chili sauce.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Mugunghwa Naeng Myun 무궁화냉면</span><span class="menu-price">$20 / $38</span></div><div class="menu-desc">Cold buckwheat noodles in house-made beef broth with spicy sauce and seaweed flakes.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Yukhoe Naeng Myun 육회냉면</span><span class="menu-price">$25 / $43</span></div><div class="menu-desc">Cold noodles topped with seasoned raw beef and egg.</div><div class="menu-note">* Raw meat</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Gogi Kalguksu 고기칼국수</span><span class="menu-price">$20 / $38</span></div><div class="menu-desc">White noodles and beef in rich, creamy beef broth.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Gogi Bibim Kalguksu 고기비빔칼국수</span><span class="menu-price">$20 / $38</span></div><div class="menu-desc">Spicy Korean noodles with beef, vegetables, and chili sauce.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Deulkkae Kalguksu 들깨칼국수</span><span class="menu-price">$22 / $40</span></div><div class="menu-desc">Noodles in rich beef broth with perilla seeds and vegetables.</div></div>
+      </div>
+    </div>
+
+    <!-- HOUSE SPECIALS -->
+    <div id="house" class="menu-section">
+      <div class="menu-grid">
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Bossam 보쌈</span><span class="menu-price">$40</span></div><div class="menu-desc">Tender simmered pork served with fresh vegetables and dipping sauces.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Garlic Bossam 마늘보쌈</span><span class="menu-price">$42</span></div><div class="menu-desc">Tender simmered pork topped with garlic sauce, served with fresh vegetables and dipping sauces.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Bossam Muchim 보쌈무침</span><span class="menu-price">$52</span></div><div class="menu-desc">Thinly sliced simmered pork mixed with a spicy, tangy homemade sauce, noodles, and fresh vegetables.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Suyuk 수육</span><span class="menu-price">$60</span></div><div class="menu-desc">Tender assorted beef slices simmered with secret seasonings, served with warm broth and dipping sauces.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Galbi Jjim 갈비찜</span><span class="menu-price">$85</span></div><div class="menu-desc">Tender beef short ribs braised in a rich, sweet soy-based sauce with glass noodles and vegetables.</div><div class="menu-note">Add Cheese +$5</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Spicy Galbi Jjim 매운갈비찜</span><span class="menu-price">$85</span></div><div class="menu-desc">Tender beef short ribs braised in a spicy, savory soy-based sauce with glass noodles and vegetables.</div><div class="menu-note">Add Cheese +$5</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Rose Galbi Jjim 로제갈비찜</span><span class="menu-price">$85</span></div><div class="menu-desc">Tender beef short ribs braised in a spicy cream-based sauce with glass noodles and vegetables for a rich, smooth flavor.</div><div class="menu-note">Add Cheese +$5</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Don Katsu 돈까스</span><span class="menu-price">$20</span></div><div class="menu-desc">Pork cutlet topped with our house-made sweet sauce, served with rice and salad.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Cheese Don Katsu 치즈돈까스</span><span class="menu-price">$22</span></div><div class="menu-desc">Pork cutlet filled with cheese and topped with our house-made sweet sauce, served with rice and salad.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Spicy Rice Cake 떡볶이</span><span class="menu-price">$18</span></div><div class="menu-desc">Chewy rice cakes in spicy sweet chili sauce with fish cake and Korean sausage.</div><div class="menu-note">Add Ramen or Cheese +$3</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Rose Spicy Rice Cake 로제떡볶이</span><span class="menu-price">$20</span></div><div class="menu-desc">Chewy rice cakes in creamy spicy sauce with fish cake and Korean sausage.</div><div class="menu-note">Add Ramen or Cheese +$3</div></div>
+      </div>
+    </div>
+
+    <!-- BBQ -->
+    <div id="bbq" class="menu-section">
+      <div class="menu-grid">
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Galbi 갈비</span><span class="menu-price">$38</span></div><div class="menu-desc">Prime beef short ribs marinated in our signature soy-sesame sauce, grilled tableside.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Beef Bulgogi 불고기</span><span class="menu-price">$33</span></div><div class="menu-desc">Thinly sliced beef marinated in sweet soy sauce.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Chicken 치킨</span><span class="menu-price">$33</span></div><div class="menu-desc">Seasoned chicken grilled tableside.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Pork Bulgogi 돼지불고기</span><span class="menu-price">$33</span></div><div class="menu-desc">Sliced pork marinated in sweet soy sauce, grilled tableside.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Spicy Pork 제육</span><span class="menu-price">$33</span></div><div class="menu-desc">Sliced pork marinated in gochujang sauce, grilled tableside.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Spicy Chicken 매운치킨</span><span class="menu-price">$33</span></div><div class="menu-desc">Spicy marinated chicken grilled tableside.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Grilled Mackerel 고등어구이</span><span class="menu-price">$33</span></div><div class="menu-desc">Grilled mackerel served with traditional sides.</div></div>
+      </div>
+      <div class="menu-notice">SSAM available upon request 쌈</div>
+    </div>
+
+    <!-- KOREAN FAVORITES -->
+    <div id="korean" class="menu-section">
+      <p class="menu-cat-title">Chicken Boneless Wing</p>
+      <div class="menu-grid">
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Original · Half (8pcs)</span><span class="menu-price">$19</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Original · Whole (16pcs)</span><span class="menu-price">$35</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Spicy · Half (8pcs)</span><span class="menu-price">$19</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Spicy · Whole (16pcs)</span><span class="menu-price">$35</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Soy Garlic · Half (8pcs)</span><span class="menu-price">$19</span></div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Garlic · Half (8pcs)</span><span class="menu-price">$19</span></div></div>
+      </div>
+      <p class="menu-cat-title">Don Katsu</p>
+      <div class="menu-grid">
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Don Katsu 돈까스</span><span class="menu-price">$20</span></div><div class="menu-desc">Pork cutlet topped with our house-made sweet sauce, served with rice and salad.</div></div>
+        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Cheese Don Katsu 치즈돈까스</span><span class="menu-price">$22</span></div><div class="menu-desc">Pork cutlet filled with cheese, topped with sweet sauce, served with rice and salad.</div></div>
+      </div>
+    </div>
+
+    <div class="menu-notice" style="margin-top:32px;">* Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.<br><br>A 20% service charge will be added for parties of 6 or more.</div>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <div class="order-inner">
+    <div style="text-align:center;margin-bottom:40px;">
+      <p class="section-label">Takeout & Delivery</p>
+      <h2 class="section-title">Order Online</h2>
+      <div class="gold-line" style="margin:0 auto;"></div>
+    </div>
+    <div class="order-grid">
+      <div class="order-items" id="orderItems"></div>
+      <div class="cart-panel">
+        <div class="cart-title">Your Order</div>
+        <div class="cart-list" id="cartList"><p class="cart-empty">No items added yet.</p></div>
+        <div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+        <button class="btn-order" onclick="placeOrder()">Place Order</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reservation" id="reservation">
+  <div class="res-inner">
+    <p class="section-label">Dining Experience</p>
+    <h2 class="section-title">Reserve a Table</h2>
+    <div class="gold-line"></div>
+    <div class="form-row">
+      <div class="form-group"><label>First Name</label><input type="text" placeholder="Soo-Jin"/></div>
+      <div class="form-group"><label>Last Name</label><input type="text" placeholder="Kim"/></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"/></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="(510) 989-5019"/></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Date</label><input type="date"/></div>
+      <div class="form-group"><label>Time</label>
+        <select><option>11:00 AM</option><option>11:30 AM</option><option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>5:00 PM</option><option>6:00 PM</option><option>7:00 PM</option><option>8:00 PM</option></select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Party Size</label>
+        <select><option>6 Guests</option><option>7 Guests</option><option>8 Guests</option><option>9 Guests</option><option>10 Guests</option><option>11+ Guests</option></select>
+      </div>
+      <div class="form-group"><label>Special Notes</label><input type="text" placeholder="e.g. window seat, high chair..."/></div>
+    </div>
+    <div class="form-group"><label>Additional Requests</label><textarea placeholder="Dietary restrictions, seating preferences, or any special notes..."></textarea></div>
+    <button class="btn-submit" onclick="submitReservation()">Request Reservation</button>
+    <div class="success-msg" id="successMsg">Thank you! Your reservation request has been received. We will confirm within 24 hours.</div>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="loc-inner">
+    <div>
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Visit Us</h2>
+      <div class="gold-line"></div>
+      <div class="loc-map">
+        <div><div class="map-pin"><div class="map-pin-dot"></div></div>
+        <div class="map-text">10140 San Pablo Ave<br>El Cerrito, CA 94530</div></div>
+      </div>
+    </div>
+    <div class="loc-info">
+      <h3>Hours & Information</h3>
+      <div class="info-block"><div class="info-label">Address</div><div class="info-value">10140 San Pablo Ave<br>El Cerrito, CA 94530</div></div>
+      <div class="info-block"><div class="info-label">Phone</div><div class="info-value">(510) 989-5019</div></div>
+      <div class="info-block"><div class="info-label">Email</div><div class="info-value">mugunghwakrinc@gmail.com</div></div>
+      <div class="info-block">
+        <div class="info-label">Hours of Operation</div>
+        <div>
+          <div class="hours-row"><span class="day">Monday – Thursday</span><span>11:00 AM – 9:00 PM</span></div>
+          <div class="hours-row"><span class="day">Friday – Saturday</span><span>11:00 AM – 9:30 PM</span></div>
+          <div class="hours-row"><span class="day">Sunday</span><span>11:00 AM – 9:00 PM</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">MUGUNGHWA</div>
+  <div class="f-sub">Korean Restaurant</div>
+  <div class="f-divider"></div>
+  <p>10140 San Pablo Ave, El Cerrito, CA 94530</p>
+  <p>(510) 989-5019 · mugunghwakrinc@gmail.com</p>
+  <div class="copyright">© 2026 Mugunghwa Korean Restaurant. All rights reserved.</div>
+</footer>
+
+<script>
+(function(){
+  let src=null;
+  try{const imgs=window.parent.document.querySelectorAll('img');imgs.forEach(img=>{if(img.naturalWidth>50&&img.src&&!img.src.includes('anthropic')&&!img.src.includes('claude'))src=img.src;});}catch(e){}
+  if(!src){try{const els=window.parent.document.querySelectorAll('[src]');els.forEach(el=>{if(el.src&&el.src.startsWith('blob:'))src=el.src;});}catch(e){}}
+  if(src){['nav-logo','hero-logo','about-logo'].forEach(id=>{const el=document.getElementById(id);if(el)el.src=src;});}
+})();
+
+function switchTab(id,el){
+  document.querySelectorAll('.menu-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+
+const orderMenu=[
+  {name:'Galbi 갈비',price:38},{name:'Beef Bulgogi 불고기',price:33},
+  {name:'Dolsot Bibimbap 돌솥비빔밥',price:18},{name:'Soft Tofu Soup 순두부',price:18},
+  {name:'Galbi Jjim 갈비찜',price:85},{name:'Bossam 보쌈',price:40},
+  {name:'Naeng Myun 냉면',price:18},{name:'Spicy Rice Cake 떡볶이',price:18},
+];
+const cart={};
+function renderOrderItems(){
+  document.getElementById('orderItems').innerHTML=orderMenu.map((item,i)=>`
+    <div class="order-item">
+      <div class="order-item-info"><div class="name">${item.name}</div><div class="price">$${item.price}</div></div>
+      <div class="qty-ctrl">
+        <button class="qty-btn" onclick="updateCart(${i},-1)">−</button>
+        <span class="qty-num" id="qty-${i}">0</span>
+        <button class="qty-btn" onclick="updateCart(${i},1)">+</button>
+      </div>
+    </div>`).join('');
+}
+function updateCart(i,delta){
+  cart[i]=Math.max(0,(cart[i]||0)+delta);
+  document.getElementById('qty-'+i).textContent=cart[i];
+  renderCart();
+}
+function renderCart(){
+  const entries=Object.entries(cart).filter(([,v])=>v>0);
+  const list=document.getElementById('cartList');
+  if(!entries.length){list.innerHTML='<p class="cart-empty">No items added yet.</p>';document.getElementById('cartTotal').textContent='$0.00';return;}
+  let total=0;
+  list.innerHTML=entries.map(([i,qty])=>{const item=orderMenu[i];const sub=item.price*qty;total+=sub;return`<div class="cart-row"><span>${item.name} x${qty}</span><span>$${sub}</span></div>`;}).join('');
+  document.getElementById('cartTotal').textContent='$'+total.toFixed(2);
+}
+function placeOrder(){
+  if(!Object.entries(cart).filter(([,v])=>v>0).length){alert('Please add items to your order first.');return;}
+  alert('Thank you for your order! We will contact you shortly to confirm.');
+  Object.keys(cart).forEach(k=>delete cart[k]);
+  renderOrderItems();renderCart();
+}
+renderOrderItems();
+function submitReservation(){document.getElementById('successMsg').style.display='block';}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
+</script>
+</body>
+</html>
