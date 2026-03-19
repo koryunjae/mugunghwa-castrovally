@@ -135,15 +135,29 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
   .nav-inner{height:60px;}
   .nav-logo img{height:40px;width:40px;}
   .nav-logo-text .n1{font-size:14px;}
+  .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
+  .hamburger span{width:24px;height:2px;background:var(--brown);display:block;transition:all 0.3s;}
+  .mobile-menu{display:none;position:fixed;top:60px;left:0;width:100%;background:rgba(255,255,255,0.98);border-bottom:1px solid #e8ddd5;z-index:99;padding:16px 0;}
+  .mobile-menu.open{display:block;}
+  .mobile-menu a{display:block;padding:14px 5%;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);border-bottom:1px solid #f0e8e0;}
+  .mobile-menu a:last-child{border-bottom:none;}
+  .mobile-menu .mobile-cta{display:block;margin:16px 5% 8px;background:var(--brown);color:#fff;padding:14px;text-align:center;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
+
   .about-inner{grid-template-columns:1fr;gap:32px;}
   .about-visual{height:260px;}
   .about-visual img{width:100%;height:100%;object-fit:cover;}
+
   .loc-inner{grid-template-columns:1fr;gap:32px;}
+
   .order-grid{grid-template-columns:1fr;gap:20px;}
+
   .form-row{grid-template-columns:1fr;}
+
   .hero h1{letter-spacing:4px;}
+
   .menu-tabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;}
   .tab{white-space:nowrap;}
+
   section{padding:60px 4%;}
 }
 </style>
@@ -166,9 +180,20 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
       <li><a href="#reservation">Reserve</a></li>
       <li><a href="#location">Visit</a></li>
     </ul>
-    <button class="nav-cta" onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">Reserve a Table</button>
+    <button class="nav-cta" ...>Reserve a Table</button>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()" style="display:none;">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#menu" onclick="closeMenu()">Menu</a>
+  <a href="#order" onclick="closeMenu()">Order</a>
+  <a href="#reservation" onclick="closeMenu()">Reserve</a>
+  <a href="#location" onclick="closeMenu()">Visit</a>
+  <a href="tel:+15109895019" class="mobile-cta">Reserve a Table</a>
+</div>
 
 <section class="hero" id="home">
   <div class="hero-content">
@@ -513,7 +538,13 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
   try{const imgs=window.parent.document.querySelectorAll('img');imgs.forEach(img=>{if(img.naturalWidth>50&&img.src&&!img.src.includes('anthropic')&&!img.src.includes('claude'))src=img.src;});}catch(e){}
   if(!src){try{const els=window.parent.document.querySelectorAll('[src]');els.forEach(el=>{if(el.src&&el.src.startsWith('blob:'))src=el.src;});}catch(e){}}
 })();
-
+  
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');}
+function checkMobile(){const h=document.getElementById('hamburger');if(window.innerWidth<=768)h.style.display='flex';else h.style.display='none';}
+checkMobile();
+window.addEventListener('resize',checkMobile);
+  
 function switchTab(id,el){
   document.querySelectorAll('.menu-section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
