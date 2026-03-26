@@ -24,6 +24,9 @@ nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.97);border-bot
 .nav-links a{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);opacity:0.8;transition:opacity 0.2s;}
 .nav-links a:hover{opacity:1;}
 
+/* mobile-menu 기본 숨김 — PC/모바일 공통 */
+.mobile-menu{display:none;}
+
 /* SELECT LOCATION — PC only */
 .nav-reserve{position:relative;display:inline-block;}
 .nav-cta{background:var(--brown);color:#fff;padding:10px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;gap:8px;font-family:inherit;white-space:nowrap;}
@@ -159,7 +162,7 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
   .nav-logo-text .n1{font-size:14px;}
   .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
   .hamburger span{width:24px;height:2px;background:var(--brown);display:block;transition:all 0.3s;}
-  .mobile-menu{display:none;position:fixed;top:60px;left:0;width:100%;background:rgba(255,255,255,0.98);border-bottom:1px solid #e8ddd5;z-index:99;padding:16px 0;}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;width:100%;background:rgba(255,255,255,0.98);border-bottom:1px solid #e8ddd5;z-index:99;padding:16px 0;}
   .mobile-menu.open{display:block;}
   .mobile-menu a{display:block;padding:14px 5%;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);border-bottom:1px solid #f0e8e0;}
   .mobile-menu a:last-child{border-bottom:none;}
@@ -563,7 +566,10 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
 
 function toggleReserve(e){
   e.stopPropagation();
-  document.getElementById('navReserve').classList.toggle('open');
+  const nr=document.getElementById('navReserve');
+  const dd=nr.querySelector('.reserve-dropdown');
+  const isOpen=nr.classList.toggle('open');
+  dd.style.display=isOpen?'block':'none';
 }
 function toggleMobileReserve(e){
   e.stopPropagation();
@@ -574,7 +580,9 @@ function toggleMobileReserve(e){
   arr.style.transform=open?'':'rotate(180deg)';
 }
 document.addEventListener('click',function(){
-  document.getElementById('navReserve').classList.remove('open');
+  const nr=document.getElementById('navReserve');
+  nr.classList.remove('open');
+  nr.querySelector('.reserve-dropdown').style.display='none';
   const d=document.getElementById('mobileReserveDrop');
   if(d){d.style.display='none';document.getElementById('mobileArr').style.transform='';}
 });
