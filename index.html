@@ -24,26 +24,19 @@ nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.97);border-bot
 .nav-links a{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);opacity:0.8;transition:opacity 0.2s;}
 .nav-links a:hover{opacity:1;}
 
-/* RESERVE DROPDOWN */
+/* SELECT LOCATION DROPDOWN */
 .nav-reserve{position:relative;}
-.nav-cta{background:var(--brown);color:#fff;padding:10px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;gap:8px;}
+.nav-cta{background:var(--brown);color:#fff;padding:10px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;gap:8px;font-family:inherit;}
 .nav-cta:hover{background:var(--brown-light);}
-.nav-cta svg{transition:transform 0.2s;}
-.nav-reserve.open .nav-cta svg{transform:rotate(180deg);}
-.reserve-dropdown{
-  display:none;position:absolute;top:calc(100% + 8px);right:0;
-  background:#fff;border:1px solid #e8ddd5;min-width:220px;
-  box-shadow:0 8px 24px rgba(92,45,10,0.12);z-index:200;
-}
+.nav-cta .arr{transition:transform 0.2s;}
+.nav-reserve.open .arr{transform:rotate(180deg);}
+.reserve-dropdown{display:none;position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid #e8ddd5;min-width:210px;box-shadow:0 8px 24px rgba(92,45,10,0.12);z-index:200;}
 .nav-reserve.open .reserve-dropdown{display:block;}
-.reserve-dropdown a{
-  display:block;padding:14px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--brown);border-bottom:1px solid #f0e8e0;transition:background 0.2s;
-}
-.reserve-dropdown a:last-child{border-bottom:none;}
+.reserve-dropdown a,.reserve-dropdown .dd-item{display:block;padding:13px 18px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);border-bottom:1px solid #f0e8e0;transition:background 0.2s;}
+.reserve-dropdown a:last-child,.reserve-dropdown .dd-item:last-child{border-bottom:none;}
 .reserve-dropdown a:hover{background:var(--brown-pale);}
-.reserve-dropdown .loc-label{font-size:9px;letter-spacing:2px;color:var(--brown-mid);display:block;margin-bottom:2px;}
-.reserve-dropdown .loc-name{font-size:12px;color:var(--brown);}
+.reserve-dropdown .dd-label{display:block;font-size:9px;letter-spacing:2px;color:var(--brown-mid);margin-bottom:2px;}
+.reserve-dropdown .dd-item{opacity:0.45;cursor:default;}
 
 .hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.45) 50%,rgba(0,0,0,0.68) 100%);z-index:2;}
@@ -81,6 +74,7 @@ section{padding:80px 5%;}
 .section-title{font-size:clamp(26px,4vw,42px);color:var(--brown);font-weight:400;letter-spacing:2px;margin-bottom:18px;}
 .gold-line{width:50px;height:2px;background:var(--gold);margin-bottom:32px;}
 
+/* ABOUT */
 .about{background:var(--light);}
 .about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
 .about-visual{background:var(--brown-pale);height:380px;display:flex;align-items:center;justify-content:center;}
@@ -88,6 +82,7 @@ section{padding:80px 5%;}
 .about p{font-size:16px;line-height:1.9;color:#4A3728;margin-bottom:16px;}
 .about-quote{border-left:3px solid var(--gold);padding-left:20px;font-style:italic;font-size:17px;color:var(--brown);margin:24px 0;}
 
+/* MENU */
 .menu{background:#fff;}
 .menu-inner{max-width:1200px;margin:0 auto;}
 .menu-tabs{display:flex;flex-wrap:wrap;gap:0;margin-bottom:40px;border-bottom:1px solid #e8ddd5;}
@@ -106,6 +101,7 @@ section{padding:80px 5%;}
 .menu-note{font-size:11px;color:var(--brown-mid);margin-top:6px;font-style:italic;}
 .menu-notice{font-size:12px;color:var(--gray);margin-top:24px;padding:16px;border:1px solid #e8ddd5;line-height:1.7;}
 
+/* ORDER */
 .order{background:var(--brown-pale);}
 .order-inner{max-width:1000px;margin:0 auto;}
 .order-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
@@ -126,6 +122,7 @@ section{padding:80px 5%;}
 .btn-order{width:100%;background:var(--brown);color:#fff;padding:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;margin-top:16px;font-family:inherit;}
 .btn-order:hover{background:var(--brown-light);}
 
+/* RESERVATION */
 .reservation{background:#fff;}
 .res-inner{max-width:700px;margin:0 auto;text-align:center;}
 .res-inner .gold-line{margin:0 auto 32px;}
@@ -139,9 +136,13 @@ section{padding:80px 5%;}
 .btn-submit:hover{background:var(--brown-light);}
 .success-msg{display:none;background:var(--brown-pale);border:1px solid var(--brown-mid);padding:18px;text-align:center;font-size:14px;color:var(--brown);margin-top:14px;}
 
+/* LOCATION */
 .location{background:var(--light);}
 .loc-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
 .loc-map{background:#e8ddd5;height:300px;display:flex;align-items:center;justify-content:center;}
+.map-pin{width:36px;height:36px;background:var(--brown);border-radius:50% 50% 50% 0;transform:rotate(-45deg);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;}
+.map-pin-dot{width:14px;height:14px;background:#fff;border-radius:50%;}
+.map-text{font-size:13px;color:var(--brown);letter-spacing:1px;text-align:center;}
 .loc-info h3{font-size:18px;color:var(--brown);font-weight:400;letter-spacing:1px;margin-bottom:18px;}
 .info-block{margin-bottom:22px;}
 .info-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-mid);margin-bottom:5px;}
@@ -201,27 +202,24 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
       <li><a href="#reservation" onclick="event.preventDefault();document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">Reserve</a></li>
       <li><a href="#location" onclick="event.preventDefault();document.getElementById('location').scrollIntoView({behavior:'smooth'})">Visit</a></li>
     </ul>
-    <!-- RESERVE DROPDOWN -->
     <div class="nav-reserve" id="navReserve">
       <button class="nav-cta" onclick="toggleReserve(event)">
         Select Location
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 3L5 7L9 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg class="arr" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="reserve-dropdown">
         <a href="index.html">
-          <span class="loc-label">El Cerrito</span>
-          <span class="loc-name">10140 San Pablo Ave</span>
+          <span class="dd-label">El Cerrito</span>
+          10140 San Pablo Ave
         </a>
         <a href="https://www.mugunghwaoakland.com">
-          <span class="loc-label">Oakland</span>
-          <span class="loc-name">4315 Telegraph Ave</span>
+          <span class="dd-label">Oakland</span>
+          4315 Telegraph Ave
         </a>
-        <a href="#" style="opacity:0.5;cursor:default;" onclick="return false;">
-          <span class="loc-label">Castro Valley</span>
-          <span class="loc-name" style="color:var(--gold);font-size:11px;letter-spacing:1px;">Coming Soon</span>
-        </a>
+        <div class="dd-item">
+          <span class="dd-label">Castro Valley</span>
+          <span style="color:var(--gold);font-size:10px;letter-spacing:1px;">Coming Soon</span>
+        </div>
       </div>
     </div>
     <div class="hamburger" id="hamburger" onclick="toggleMenu()" style="display:none;">
@@ -229,31 +227,31 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
     </div>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="event.preventDefault();closeMenu();setTimeout(()=>document.getElementById('about').scrollIntoView({behavior:'smooth'}),300)">About</a>
   <a href="#menu" onclick="event.preventDefault();closeMenu();setTimeout(()=>document.getElementById('menu').scrollIntoView({behavior:'smooth'}),300)">Menu</a>
   <a href="#order" onclick="event.preventDefault();closeMenu();setTimeout(()=>document.getElementById('order').scrollIntoView({behavior:'smooth'}),300)">Order</a>
   <a href="#reservation" onclick="event.preventDefault();closeMenu();setTimeout(()=>document.getElementById('reservation').scrollIntoView({behavior:'smooth'}),300)">Reserve</a>
   <a href="#location" onclick="event.preventDefault();closeMenu();setTimeout(()=>document.getElementById('location').scrollIntoView({behavior:'smooth'}),300)">Visit</a>
-  <div style="margin:16px 5% 8px;position:relative;" id="mobileReserveWrap">
+  <!-- 모바일 Select Location -->
+  <div style="margin:16px 5% 8px;position:relative;">
     <button onclick="toggleMobileReserve(event)" style="width:100%;background:var(--brown);color:#fff;padding:14px;text-align:center;font-size:12px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;">
       Select Location
-      <svg id="mobileReserveArrow" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition:transform 0.2s;">
-        <path d="M1 3L5 7L9 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg id="mobileArr" width="10" height="6" viewBox="0 0 10 6" fill="none" style="transition:transform 0.2s;"><path d="M1 1L5 5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <div id="mobileReserveDropdown" style="display:none;background:#fff;border:1px solid #e8ddd5;border-top:none;">
-      <a href="index.html" style="display:block;padding:14px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);border-bottom:1px solid #f0e8e0;">
+    <div id="mobileReserveDrop" style="display:none;background:#fff;border:1px solid #e8ddd5;border-top:none;">
+      <a href="index.html" style="display:block;padding:13px 18px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);border-bottom:1px solid #f0e8e0;text-decoration:none;">
         <span style="display:block;font-size:9px;letter-spacing:2px;color:var(--brown-mid);margin-bottom:2px;">El Cerrito</span>
         10140 San Pablo Ave
       </a>
-      <a href="https://www.mugunghwaoakland.com" style="display:block;padding:14px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);border-bottom:1px solid #f0e8e0;">
+      <a href="https://www.mugunghwaoakland.com" style="display:block;padding:13px 18px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);border-bottom:1px solid #f0e8e0;text-decoration:none;">
         <span style="display:block;font-size:9px;letter-spacing:2px;color:var(--brown-mid);margin-bottom:2px;">Oakland</span>
         4315 Telegraph Ave
       </a>
-      <div style="display:block;padding:14px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);opacity:0.5;">
+      <div style="padding:13px 18px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);opacity:0.45;">
         <span style="display:block;font-size:9px;letter-spacing:2px;color:var(--brown-mid);margin-bottom:2px;">Castro Valley</span>
-        <span style="color:var(--gold);font-size:11px;">Coming Soon</span>
+        <span style="color:var(--gold);font-size:10px;">Coming Soon</span>
       </div>
     </div>
   </div>
@@ -319,6 +317,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
       <button class="tab" onclick="switchTab('korean',this)">Korean Favorites</button>
       <button class="tab" onclick="switchTab('sides',this)">Sides</button>
     </div>
+
+    <!-- APPETIZER -->
     <div id="appetizer" class="menu-section active">
       <div class="menu-grid">
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Dumpling 만두</span><span class="menu-price">$14</span></div><div class="menu-desc">Pork (5pcs) / Kimchi (5pcs) / Vegetables (10pcs). Steam or Fried dumpling.</div></div>
@@ -329,6 +329,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Seafood Pancake 해물파전</span><span class="menu-price">$22</span></div><div class="menu-desc">Crispy Korean pancake loaded with fresh seafood.</div></div>
       </div>
     </div>
+
+    <!-- RICE -->
     <div id="rice" class="menu-section">
       <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;">
         <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>
@@ -350,6 +352,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Yukhoe Bibimbap 육회비빔밥</span><span class="menu-price">$23 / $41</span></div><div class="menu-desc">Rice topped with seasoned raw beef, vegetables, and egg yolk.</div><div class="menu-note">* Raw meat</div></div>
       </div>
     </div>
+
+    <!-- SIDES -->
     <div id="sides" class="menu-section">
       <div class="menu-grid">
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Stone Pot Rice (purple rice) 돌솥밥</span><span class="menu-price">$4</span></div></div>
@@ -358,6 +362,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Thick Soy Bean Paste Stew 강된장</span><span class="menu-price">$10</span></div></div>
       </div>
     </div>
+
+    <!-- CREAMY SOUP -->
     <div id="creamy" class="menu-section">
       <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;">
         <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>
@@ -382,6 +388,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Mandu & Rice Cake Soup 떡만두국</span><span class="menu-price">$20 / $38</span></div><div class="menu-desc">Dumpling soup and rice cake in house-made beef broth.</div></div>
       </div>
     </div>
+
+    <!-- CLEAR SOUP -->
     <div id="clear" class="menu-section">
       <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;">
         <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>
@@ -393,6 +401,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Naju Gomtang 나주곰탕</span><span class="menu-price">$20 / $38</span></div><div class="menu-desc">Rich house-made beef soup with sliced beef and glass noodles.</div></div>
       </div>
     </div>
+
+    <!-- SOFT TOFU SOUP -->
     <div id="tofu" class="menu-section">
       <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;">
         <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>
@@ -418,6 +428,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Seafood 해물</span><span class="menu-price">$20 / $38</span></div></div>
       </div>
     </div>
+
+    <!-- NOODLE -->
     <div id="noodle" class="menu-section">
       <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;">
         <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>
@@ -437,6 +449,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Deulkkae Kalguksu 들깨칼국수</span><span class="menu-price">$22 / $40</span></div><div class="menu-desc">Noodles in rich beef broth with perilla seeds and vegetables.</div></div>
       </div>
     </div>
+
+    <!-- HOUSE SPECIALS -->
     <div id="house" class="menu-section">
       <p class="menu-cat-title">Bossam 보쌈</p>
       <div class="menu-grid">
@@ -455,6 +469,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Rose Galbi Jjim 로제갈비찜</span><span class="menu-price">$85</span></div><div class="menu-desc">Tender beef short ribs braised in a spicy cream-based sauce with glass noodles and vegetables for a rich, smooth flavor.</div></div>
       </div>
     </div>
+
+    <!-- BBQ -->
     <div id="bbq" class="menu-section">
       <p class="menu-cat-title">K-BBQ 바베큐 <span style="font-size:11px;color:#2E7D32;letter-spacing:1px;text-transform:none;font-style:italic;">· SSAM 쌈 available upon request</span></p>
       <div class="menu-grid">
@@ -470,7 +486,10 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Grilled Mackerel 고등어구이</span><span class="menu-price">$33</span></div><div class="menu-desc">Grilled mackerel served with traditional sides.</div></div>
       </div>
     </div>
+
     </div>
+
+    <!-- KOREAN FAVORITES -->
     <div id="korean" class="menu-section">
       <p class="menu-cat-title">Korean Fried Chicken</p>
       <p style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:4px;">Choice of Wing or Boneless · Half (8pcs) / Whole (16pcs)</p>
@@ -492,6 +511,7 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Rose Spicy Rice Cake 로제떡볶이</span><span class="menu-price">$20</span></div><div class="menu-desc">Chewy rice cakes in creamy spicy sauce with fish cake and Korean sausage.</div></div>
       </div>
     </div>
+
     <div class="menu-notice" style="margin-top:32px;">* Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.<br><br>A 20% service charge will be added for parties of 6 or more.</div>
   </div>
 </section>
@@ -613,25 +633,28 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
   goTo(0);
   resetTimer();
 })();
+(function(){
+  let src=null;
+  try{const imgs=window.parent.document.querySelectorAll('img');imgs.forEach(img=>{if(img.naturalWidth>50&&img.src&&!img.src.includes('anthropic')&&!img.src.includes('claude'))src=img.src;});}catch(e){}
+  if(!src){try{const els=window.parent.document.querySelectorAll('[src]');els.forEach(el=>{if(el.src&&el.src.startsWith('blob:'))src=el.src;});}catch(e){}}
+})();
 
-function toggleMobileReserve(e){
-  e.stopPropagation();
-  const d=document.getElementById('mobileReserveDropdown');
-  const arrow=document.getElementById('mobileReserveArrow');
-  const open=d.style.display==='block';
-  d.style.display=open?'none':'block';
-  arrow.style.transform=open?'':'rotate(180deg)';
-}
-document.addEventListener('click',function(){
-  document.getElementById('mobileReserveDropdown').style.display='none';
-  document.getElementById('mobileReserveArrow').style.transform='';
-});
-
+function toggleReserve(e){
   e.stopPropagation();
   document.getElementById('navReserve').classList.toggle('open');
 }
-document.addEventListener('click', function(){
+function toggleMobileReserve(e){
+  e.stopPropagation();
+  const d=document.getElementById('mobileReserveDrop');
+  const arr=document.getElementById('mobileArr');
+  const open=d.style.display==='block';
+  d.style.display=open?'none':'block';
+  arr.style.transform=open?'':'rotate(180deg)';
+}
+document.addEventListener('click',function(){
   document.getElementById('navReserve').classList.remove('open');
+  const d=document.getElementById('mobileReserveDrop');
+  if(d){d.style.display='none';document.getElementById('mobileArr').style.transform='';}
 });
 
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
