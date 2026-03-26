@@ -14,8 +14,7 @@
 body{font-family:'Georgia',serif;color:#2C1810;background:#fff;scroll-behavior:smooth;}
 a{text-decoration:none;color:inherit;}
 
-nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.97);border-bottom:1px solid #e8ddd5;z-index:100;padding:0 5%;overflow:visible;}
-.nav-inner{overflow:visible;}
+nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.97);border-bottom:1px solid #e8ddd5;z-index:100;padding:0 5%;}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;}
 .nav-logo{display:flex;align-items:center;gap:12px;}
 .nav-logo img{height:70px;width:70px;object-fit:contain;}
@@ -25,13 +24,13 @@ nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.97);border-bot
 .nav-links a{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);opacity:0.8;transition:opacity 0.2s;}
 .nav-links a:hover{opacity:1;}
 
-/* SELECT LOCATION DROPDOWN */
+/* SELECT LOCATION — PC only */
 .nav-reserve{position:relative;display:inline-block;}
-.nav-cta{background:var(--brown);color:#fff;padding:10px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;gap:8px;font-family:inherit;}
+.nav-cta{background:var(--brown);color:#fff;padding:10px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;gap:8px;font-family:inherit;white-space:nowrap;}
 .nav-cta:hover{background:var(--brown-light);}
-.nav-cta .arr{transition:transform 0.2s;}
+.nav-cta .arr{transition:transform 0.2s;flex-shrink:0;}
 .nav-reserve.open .arr{transform:rotate(180deg);}
-.reserve-dropdown{display:none;position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid #e8ddd5;width:210px;box-shadow:0 8px 24px rgba(92,45,10,0.12);z-index:200;}
+.reserve-dropdown{display:none;position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid #e8ddd5;width:220px;box-shadow:0 8px 24px rgba(92,45,10,0.12);z-index:9999;}
 .nav-reserve.open .reserve-dropdown{display:block;}
 .reserve-dropdown a,.reserve-dropdown .dd-item{display:block;padding:13px 18px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);border-bottom:1px solid #f0e8e0;transition:background 0.2s;}
 .reserve-dropdown a:last-child,.reserve-dropdown .dd-item:last-child{border-bottom:none;}
@@ -75,7 +74,6 @@ section{padding:80px 5%;}
 .section-title{font-size:clamp(26px,4vw,42px);color:var(--brown);font-weight:400;letter-spacing:2px;margin-bottom:18px;}
 .gold-line{width:50px;height:2px;background:var(--gold);margin-bottom:32px;}
 
-/* ABOUT */
 .about{background:var(--light);}
 .about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
 .about-visual{background:var(--brown-pale);height:380px;display:flex;align-items:center;justify-content:center;}
@@ -83,7 +81,6 @@ section{padding:80px 5%;}
 .about p{font-size:16px;line-height:1.9;color:#4A3728;margin-bottom:16px;}
 .about-quote{border-left:3px solid var(--gold);padding-left:20px;font-style:italic;font-size:17px;color:var(--brown);margin:24px 0;}
 
-/* MENU */
 .menu{background:#fff;}
 .menu-inner{max-width:1200px;margin:0 auto;}
 .menu-tabs{display:flex;flex-wrap:wrap;gap:0;margin-bottom:40px;border-bottom:1px solid #e8ddd5;}
@@ -102,7 +99,6 @@ section{padding:80px 5%;}
 .menu-note{font-size:11px;color:var(--brown-mid);margin-top:6px;font-style:italic;}
 .menu-notice{font-size:12px;color:var(--gray);margin-top:24px;padding:16px;border:1px solid #e8ddd5;line-height:1.7;}
 
-/* ORDER */
 .order{background:var(--brown-pale);}
 .order-inner{max-width:1000px;margin:0 auto;}
 .order-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
@@ -123,7 +119,6 @@ section{padding:80px 5%;}
 .btn-order{width:100%;background:var(--brown);color:#fff;padding:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;margin-top:16px;font-family:inherit;}
 .btn-order:hover{background:var(--brown-light);}
 
-/* RESERVATION */
 .reservation{background:#fff;}
 .res-inner{max-width:700px;margin:0 auto;text-align:center;}
 .res-inner .gold-line{margin:0 auto 32px;}
@@ -137,13 +132,9 @@ section{padding:80px 5%;}
 .btn-submit:hover{background:var(--brown-light);}
 .success-msg{display:none;background:var(--brown-pale);border:1px solid var(--brown-mid);padding:18px;text-align:center;font-size:14px;color:var(--brown);margin-top:14px;}
 
-/* LOCATION */
 .location{background:var(--light);}
 .loc-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
 .loc-map{background:#e8ddd5;height:300px;display:flex;align-items:center;justify-content:center;}
-.map-pin{width:36px;height:36px;background:var(--brown);border-radius:50% 50% 50% 0;transform:rotate(-45deg);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;}
-.map-pin-dot{width:14px;height:14px;background:#fff;border-radius:50%;}
-.map-text{font-size:13px;color:var(--brown);letter-spacing:1px;text-align:center;}
 .loc-info h3{font-size:18px;color:var(--brown);font-weight:400;letter-spacing:1px;margin-bottom:18px;}
 .info-block{margin-bottom:22px;}
 .info-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-mid);margin-bottom:5px;}
@@ -159,8 +150,10 @@ footer .f-divider{width:40px;height:1px;background:var(--gold);margin:18px auto;
 footer p{font-size:12px;letter-spacing:1.5px;margin-bottom:5px;}
 footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-top:14px;}
 
-@media(max-width:768px){.mobile-select-loc{display:block!important;}}
-  .nav-cta{display:none;}
+/* MOBILE */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .nav-reserve{display:none;}  /* PC 드롭다운 버튼 모바일에서 숨김 */
   .nav-inner{height:60px;}
   .nav-logo img{height:40px;width:40px;}
   .nav-logo-text .n1{font-size:14px;}
@@ -170,7 +163,13 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
   .mobile-menu.open{display:block;}
   .mobile-menu a{display:block;padding:14px 5%;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);border-bottom:1px solid #f0e8e0;}
   .mobile-menu a:last-child{border-bottom:none;}
-  .mobile-menu .mobile-cta{display:block;margin:16px 5% 8px;background:var(--brown);color:#fff;padding:14px;text-align:center;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;}
+  .mobile-cta-wrap{margin:16px 5% 8px;}
+  .mobile-cta-btn{width:100%;background:var(--brown);color:#fff;padding:14px;font-size:12px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;}
+  .mobile-cta-drop{display:none;background:#fff;border:1px solid #e8ddd5;border-top:none;}
+  .mobile-cta-drop a{display:block;padding:13px 18px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);border-bottom:1px solid #f0e8e0;text-decoration:none;}
+  .mobile-cta-drop a:last-child{border-bottom:none;}
+  .mobile-cta-drop .dd-label{display:block;font-size:9px;letter-spacing:2px;color:var(--brown-mid);margin-bottom:2px;}
+  .mobile-cta-drop .coming{padding:13px 18px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);opacity:0.45;}
   .about-inner{grid-template-columns:1fr;gap:32px;}
   .about-visual{height:260px;}
   .about-visual img{width:100%;height:100%;object-fit:cover;}
@@ -202,24 +201,16 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
       <li><a href="#reservation" onclick="event.preventDefault();document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">Reserve</a></li>
       <li><a href="#location" onclick="event.preventDefault();document.getElementById('location').scrollIntoView({behavior:'smooth'})">Visit</a></li>
     </ul>
+    <!-- PC: Select Location 드롭다운 -->
     <div class="nav-reserve" id="navReserve">
       <button class="nav-cta" onclick="toggleReserve(event)">
         Select Location
-        <svg class="arr" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="arr" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="reserve-dropdown">
-        <a href="index.html">
-          <span class="dd-label">El Cerrito</span>
-          10140 San Pablo Ave
-        </a>
-        <a href="https://www.mugunghwaoakland.com">
-          <span class="dd-label">Oakland</span>
-          4315 Telegraph Ave
-        </a>
-        <div class="dd-item">
-          <span class="dd-label">Castro Valley</span>
-          <span style="color:var(--gold);font-size:10px;letter-spacing:1px;">Coming Soon</span>
-        </div>
+        <a href="index.html"><span class="dd-label">El Cerrito</span>10140 San Pablo Ave</a>
+        <a href="https://www.mugunghwaoakland.com"><span class="dd-label">Oakland</span>4315 Telegraph Ave</a>
+        <div class="dd-item"><span class="dd-label">Castro Valley</span><span style="color:var(--gold);font-size:10px;">Coming Soon</span></div>
       </div>
     </div>
     <div class="hamburger" id="hamburger" onclick="toggleMenu()" style="display:none;">
@@ -234,25 +225,16 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
   <a href="#order" onclick="event.preventDefault();closeMenu();setTimeout(()=>document.getElementById('order').scrollIntoView({behavior:'smooth'}),300)">Order</a>
   <a href="#reservation" onclick="event.preventDefault();closeMenu();setTimeout(()=>document.getElementById('reservation').scrollIntoView({behavior:'smooth'}),300)">Reserve</a>
   <a href="#location" onclick="event.preventDefault();closeMenu();setTimeout(()=>document.getElementById('location').scrollIntoView({behavior:'smooth'}),300)">Visit</a>
-  <!-- 모바일 Select Location -->
-  <div style="margin:16px 5% 8px;position:relative;display:none;" class="mobile-select-loc">
-    <button onclick="toggleMobileReserve(event)" style="width:100%;background:var(--brown);color:#fff;padding:14px;text-align:center;font-size:12px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;">
+  <!-- 모바일 전용 Select Location -->
+  <div class="mobile-cta-wrap">
+    <button class="mobile-cta-btn" onclick="toggleMobileReserve(event)">
       Select Location
       <svg id="mobileArr" width="10" height="6" viewBox="0 0 10 6" fill="none" style="transition:transform 0.2s;"><path d="M1 1L5 5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-    <div id="mobileReserveDrop" style="display:none;background:#fff;border:1px solid #e8ddd5;border-top:none;">
-      <a href="index.html" style="display:block;padding:13px 18px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);border-bottom:1px solid #f0e8e0;text-decoration:none;">
-        <span style="display:block;font-size:9px;letter-spacing:2px;color:var(--brown-mid);margin-bottom:2px;">El Cerrito</span>
-        10140 San Pablo Ave
-      </a>
-      <a href="https://www.mugunghwaoakland.com" style="display:block;padding:13px 18px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);border-bottom:1px solid #f0e8e0;text-decoration:none;">
-        <span style="display:block;font-size:9px;letter-spacing:2px;color:var(--brown-mid);margin-bottom:2px;">Oakland</span>
-        4315 Telegraph Ave
-      </a>
-      <div style="padding:13px 18px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brown);opacity:0.45;">
-        <span style="display:block;font-size:9px;letter-spacing:2px;color:var(--brown-mid);margin-bottom:2px;">Castro Valley</span>
-        <span style="color:var(--gold);font-size:10px;">Coming Soon</span>
-      </div>
+    <div class="mobile-cta-drop" id="mobileReserveDrop">
+      <a href="index.html"><span class="dd-label">El Cerrito</span>10140 San Pablo Ave</a>
+      <a href="https://www.mugunghwaoakland.com"><span class="dd-label">Oakland</span>4315 Telegraph Ave</a>
+      <div class="coming"><span class="dd-label">Castro Valley</span><span style="color:var(--gold);font-size:10px;">Coming Soon</span></div>
     </div>
   </div>
 </div>
@@ -317,8 +299,6 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
       <button class="tab" onclick="switchTab('korean',this)">Korean Favorites</button>
       <button class="tab" onclick="switchTab('sides',this)">Sides</button>
     </div>
-
-    <!-- APPETIZER -->
     <div id="appetizer" class="menu-section active">
       <div class="menu-grid">
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Dumpling 만두</span><span class="menu-price">$14</span></div><div class="menu-desc">Pork (5pcs) / Kimchi (5pcs) / Vegetables (10pcs). Steam or Fried dumpling.</div></div>
@@ -329,13 +309,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Seafood Pancake 해물파전</span><span class="menu-price">$22</span></div><div class="menu-desc">Crispy Korean pancake loaded with fresh seafood.</div></div>
       </div>
     </div>
-
-    <!-- RICE -->
     <div id="rice" class="menu-section">
-      <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;">
-        <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>
-        Combo includes half portion of K-BBQ of your choice · <span style="color:var(--brown);">Galbi +$5</span> · Half Mackerel included
-      </div>
+      <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;"><span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>Combo includes half portion of K-BBQ of your choice · <span style="color:var(--brown);">Galbi +$5</span> · Half Mackerel included</div>
       <p class="menu-cat-title">Dolsot Bibimbap <span style="font-size:11px;color:var(--brown-mid);letter-spacing:1px;text-transform:none;font-style:italic;">+ Thick Soybean Paste Stew +$5</span></p>
       <div class="menu-grid">
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Galbi 갈비비빔밥</span><span class="menu-price">$23 / $41</span></div><div class="menu-desc">Short rib beef. Stone pot rice with choice of protein, vegetables, and egg.</div></div>
@@ -348,12 +323,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Tofu 두부비빔밥</span><span class="menu-price">$18 / $36</span></div><div class="menu-desc">Stone pot rice with tofu, vegetables, and egg.</div></div>
       </div>
       <p class="menu-cat-title">Yukhoe Bibimbap <span style="font-size:11px;color:var(--brown-mid);letter-spacing:1px;text-transform:none;font-style:italic;">+ Thick Soybean Paste Stew +$5</span></p>
-      <div class="menu-grid">
-        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Yukhoe Bibimbap 육회비빔밥</span><span class="menu-price">$23 / $41</span></div><div class="menu-desc">Rice topped with seasoned raw beef, vegetables, and egg yolk.</div><div class="menu-note">* Raw meat</div></div>
-      </div>
+      <div class="menu-grid"><div class="menu-card"><div class="menu-card-top"><span class="menu-name">Yukhoe Bibimbap 육회비빔밥</span><span class="menu-price">$23 / $41</span></div><div class="menu-desc">Rice topped with seasoned raw beef, vegetables, and egg yolk.</div><div class="menu-note">* Raw meat</div></div></div>
     </div>
-
-    <!-- SIDES -->
     <div id="sides" class="menu-section">
       <div class="menu-grid">
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Stone Pot Rice (purple rice) 돌솥밥</span><span class="menu-price">$4</span></div></div>
@@ -362,13 +333,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Thick Soy Bean Paste Stew 강된장</span><span class="menu-price">$10</span></div></div>
       </div>
     </div>
-
-    <!-- CREAMY SOUP -->
     <div id="creamy" class="menu-section">
-      <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;">
-        <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>
-        Combo includes half portion of K-BBQ of your choice · <span style="color:var(--brown);">Galbi +$5</span> · Half Mackerel included
-      </div>
+      <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;"><span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>Combo includes half portion of K-BBQ of your choice · <span style="color:var(--brown);">Galbi +$5</span> · Half Mackerel included</div>
       <p class="menu-cat-title">Seollongtang 설렁탕</p>
       <p style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:16px;">Traditional Korean house-made beef bone soup simmered for 24 hours to create a rich, milky broth.</p>
       <div class="menu-grid">
@@ -388,36 +354,20 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Mandu & Rice Cake Soup 떡만두국</span><span class="menu-price">$20 / $38</span></div><div class="menu-desc">Dumpling soup and rice cake in house-made beef broth.</div></div>
       </div>
     </div>
-
-    <!-- CLEAR SOUP -->
     <div id="clear" class="menu-section">
-      <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;">
-        <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>
-        Combo includes half portion of K-BBQ of your choice · <span style="color:var(--brown);">Galbi +$5</span> · Half Mackerel included
-      </div>
+      <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;"><span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>Combo includes half portion of K-BBQ of your choice · <span style="color:var(--brown);">Galbi +$5</span> · Half Mackerel included</div>
       <div class="menu-grid">
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Galbi Tang 갈비탕</span><span class="menu-price">$25 / $43</span></div><div class="menu-desc">Marinated beef short rib soup in house-made rich broth.</div></div>
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Premium Galbi Tang 프리미엄갈비탕</span><span class="menu-price">$30 / $48</span></div><div class="menu-desc">Rich house-made beef short rib soup with marinated ribs, abalone, shrimp, and octopus.</div></div>
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Naju Gomtang 나주곰탕</span><span class="menu-price">$20 / $38</span></div><div class="menu-desc">Rich house-made beef soup with sliced beef and glass noodles.</div></div>
       </div>
     </div>
-
-    <!-- SOFT TOFU SOUP -->
     <div id="tofu" class="menu-section">
-      <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;">
-        <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>
-        Combo includes half portion of K-BBQ of your choice · <span style="color:var(--brown);">Galbi +$5</span> · Half Mackerel included
-      </div>
+      <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;"><span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>Combo includes half portion of K-BBQ of your choice · <span style="color:var(--brown);">Galbi +$5</span> · Half Mackerel included</div>
       <p class="menu-cat-title">Soft Tofu Soup 순두부</p>
       <p style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:4px;">Served with silky soft tofu, vegetables, and choice of protein in a spicy broth.</p>
       <p style="font-size:13px;color:#2E7D32;margin-bottom:10px;">Vegetable broth and egg available upon request.</p>
-      <div style="display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;">
-        <span style="font-size:12px;color:#ccc;">Plain</span>
-        <span style="font-size:12px;color:#FFAB91;">Mild</span>
-        <span style="font-size:12px;color:#FF7043;">Medium</span>
-        <span style="font-size:12px;color:#E53935;">Spicy</span>
-        <span style="font-size:12px;color:#B71C1C;">Danger</span>
-      </div>
+      <div style="display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;"><span style="font-size:12px;color:#ccc;">Plain</span><span style="font-size:12px;color:#FFAB91;">Mild</span><span style="font-size:12px;color:#FF7043;">Medium</span><span style="font-size:12px;color:#E53935;">Spicy</span><span style="font-size:12px;color:#B71C1C;">Danger</span></div>
       <p class="menu-cat-title" style="margin-top:24px;">Choice of Protein</p>
       <div class="menu-grid">
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Dumpling 만두</span><span class="menu-price">$18 / $36</span></div></div>
@@ -428,13 +378,8 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Seafood 해물</span><span class="menu-price">$20 / $38</span></div></div>
       </div>
     </div>
-
-    <!-- NOODLE -->
     <div id="noodle" class="menu-section">
-      <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;">
-        <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>
-        Combo includes half portion of K-BBQ of your choice · <span style="color:var(--brown);">Galbi +$5</span> · Half Mackerel included
-      </div>
+      <div style="background:var(--brown-pale);border:1px solid #e8ddd5;padding:14px 20px;margin-bottom:24px;font-size:13px;color:#4A3728;line-height:1.8;"><span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:500;">Regular / Combo</span><br/>Combo includes half portion of K-BBQ of your choice · <span style="color:var(--brown);">Galbi +$5</span> · Half Mackerel included</div>
       <p class="menu-cat-title">Naeng Myun 냉면</p>
       <div class="menu-grid">
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Naeng Myun 냉면</span><span class="menu-price">$18 / $36</span></div><div class="menu-desc">Traditional cold buckwheat noodles in house-made beef broth with sliced beef.</div></div>
@@ -449,8 +394,6 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Deulkkae Kalguksu 들깨칼국수</span><span class="menu-price">$22 / $40</span></div><div class="menu-desc">Noodles in rich beef broth with perilla seeds and vegetables.</div></div>
       </div>
     </div>
-
-    <!-- HOUSE SPECIALS -->
     <div id="house" class="menu-section">
       <p class="menu-cat-title">Bossam 보쌈</p>
       <div class="menu-grid">
@@ -459,9 +402,7 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Bossam Muchim 보쌈무침</span><span class="menu-price">$52</span></div><div class="menu-desc">Thinly sliced simmered pork mixed with a spicy, tangy homemade sauce, noodles, and fresh vegetables.</div></div>
       </div>
       <p class="menu-cat-title" style="margin-top:32px;">Suyuk 수육</p>
-      <div class="menu-grid">
-        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Suyuk 수육</span><span class="menu-price">$60</span></div><div class="menu-desc">Tender assorted beef slices simmered with secret seasonings, served with warm broth and dipping sauces.</div></div>
-      </div>
+      <div class="menu-grid"><div class="menu-card"><div class="menu-card-top"><span class="menu-name">Suyuk 수육</span><span class="menu-price">$60</span></div><div class="menu-desc">Tender assorted beef slices simmered with secret seasonings, served with warm broth and dipping sauces.</div></div></div>
       <p class="menu-cat-title" style="margin-top:32px;">Galbi Jjim 갈비찜 <span style="font-size:11px;color:var(--brown-mid);letter-spacing:1px;text-transform:none;font-style:italic;">· Add Cheese +$5</span></p>
       <div class="menu-grid">
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Galbi Jjim 갈비찜</span><span class="menu-price">$85</span></div><div class="menu-desc">Tender beef short ribs braised in a rich, sweet soy-based sauce with glass noodles and vegetables.</div></div>
@@ -469,8 +410,6 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Rose Galbi Jjim 로제갈비찜</span><span class="menu-price">$85</span></div><div class="menu-desc">Tender beef short ribs braised in a spicy cream-based sauce with glass noodles and vegetables for a rich, smooth flavor.</div></div>
       </div>
     </div>
-
-    <!-- BBQ -->
     <div id="bbq" class="menu-section">
       <p class="menu-cat-title">K-BBQ 바베큐 <span style="font-size:11px;color:#2E7D32;letter-spacing:1px;text-transform:none;font-style:italic;">· SSAM 쌈 available upon request</span></p>
       <div class="menu-grid">
@@ -482,14 +421,9 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Spicy Chicken 매운치킨</span><span class="menu-price">$33</span></div><div class="menu-desc">Spicy marinated chicken grilled tableside.</div></div>
       </div>
       <p class="menu-cat-title" style="margin-top:32px;">Grilled Fish</p>
-      <div class="menu-grid">
-        <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Grilled Mackerel 고등어구이</span><span class="menu-price">$33</span></div><div class="menu-desc">Grilled mackerel served with traditional sides.</div></div>
-      </div>
+      <div class="menu-grid"><div class="menu-card"><div class="menu-card-top"><span class="menu-name">Grilled Mackerel 고등어구이</span><span class="menu-price">$33</span></div><div class="menu-desc">Grilled mackerel served with traditional sides.</div></div></div>
     </div>
-
     </div>
-
-    <!-- KOREAN FAVORITES -->
     <div id="korean" class="menu-section">
       <p class="menu-cat-title">Korean Fried Chicken</p>
       <p style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:4px;">Choice of Wing or Boneless · Half (8pcs) / Whole (16pcs)</p>
@@ -511,7 +445,6 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
         <div class="menu-card"><div class="menu-card-top"><span class="menu-name">Rose Spicy Rice Cake 로제떡볶이</span><span class="menu-price">$20</span></div><div class="menu-desc">Chewy rice cakes in creamy spicy sauce with fish cake and Korean sausage.</div></div>
       </div>
     </div>
-
     <div class="menu-notice" style="margin-top:32px;">* Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.<br><br>A 20% service charge will be added for parties of 6 or more.</div>
   </div>
 </section>
@@ -604,34 +537,23 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
 
 <script>
 (function(){
-  const slides = Array.from(document.querySelectorAll('.hero-slide'));
-  const dotsEl = document.getElementById('heroDots');
-  let cur = 0, timer = null;
-  const dots = [];
-  slides.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'hero-dot';
-    d.addEventListener('click', () => { goTo(i); resetTimer(); });
-    dotsEl.appendChild(d);
-    dots.push(d);
+  const slides=Array.from(document.querySelectorAll('.hero-slide'));
+  const dotsEl=document.getElementById('heroDots');
+  let cur=0,timer=null;
+  const dots=[];
+  slides.forEach((_,i)=>{
+    const d=document.createElement('div');
+    d.className='hero-dot';
+    d.addEventListener('click',()=>{goTo(i);resetTimer();});
+    dotsEl.appendChild(d);dots.push(d);
   });
-  function goTo(idx) {
-    slides[cur].classList.remove('active');
-    dots[cur].classList.remove('active');
-    const oldImg = slides[cur].querySelector('img');
-    oldImg.style.animation = 'none';
-    void oldImg.offsetWidth;
-    oldImg.style.animation = '';
-    cur = idx;
-    slides[cur].classList.add('active');
-    dots[cur].classList.add('active');
+  function goTo(idx){
+    slides[cur].classList.remove('active');dots[cur].classList.remove('active');
+    const o=slides[cur].querySelector('img');o.style.animation='none';void o.offsetWidth;o.style.animation='';
+    cur=idx;slides[cur].classList.add('active');dots[cur].classList.add('active');
   }
-  function resetTimer() {
-    clearInterval(timer);
-    timer = setInterval(() => goTo((cur + 1) % slides.length), 5500);
-  }
-  goTo(0);
-  resetTimer();
+  function resetTimer(){clearInterval(timer);timer=setInterval(()=>goTo((cur+1)%slides.length),5500);}
+  goTo(0);resetTimer();
 })();
 (function(){
   let src=null;
@@ -666,8 +588,7 @@ window.addEventListener('resize',checkMobile);
 function switchTab(id,el){
   document.querySelectorAll('.menu-section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  el.classList.add('active');
+  document.getElementById(id).classList.add('active');el.classList.add('active');
 }
 
 const orderMenu=[
@@ -688,11 +609,7 @@ function renderOrderItems(){
       </div>
     </div>`).join('');
 }
-function updateCart(i,delta){
-  cart[i]=Math.max(0,(cart[i]||0)+delta);
-  document.getElementById('qty-'+i).textContent=cart[i];
-  renderCart();
-}
+function updateCart(i,delta){cart[i]=Math.max(0,(cart[i]||0)+delta);document.getElementById('qty-'+i).textContent=cart[i];renderCart();}
 function renderCart(){
   const entries=Object.entries(cart).filter(([,v])=>v>0);
   const list=document.getElementById('cartList');
@@ -704,8 +621,7 @@ function renderCart(){
 function placeOrder(){
   if(!Object.entries(cart).filter(([,v])=>v>0).length){alert('Please add items to your order first.');return;}
   alert('Thank you for your order! We will contact you shortly to confirm.');
-  Object.keys(cart).forEach(k=>delete cart[k]);
-  renderOrderItems();renderCart();
+  Object.keys(cart).forEach(k=>delete cart[k]);renderOrderItems();renderCart();
 }
 renderOrderItems();
 function submitReservation(){document.getElementById('successMsg').style.display='block';}
