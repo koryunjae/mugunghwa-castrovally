@@ -159,8 +159,7 @@ footer .f-divider{width:40px;height:1px;background:var(--gold);margin:18px auto;
 footer p{font-size:12px;letter-spacing:1.5px;margin-bottom:5px;}
 footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-top:14px;}
 
-@media(max-width:768px){
-  .nav-links{display:none;}
+@media(max-width:768px){.mobile-select-loc{display:block!important;}}
   .nav-cta{display:none;}
   .nav-inner{height:60px;}
   .nav-logo img{height:40px;width:40px;}
@@ -236,7 +235,7 @@ footer .copyright{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;
   <a href="#reservation" onclick="event.preventDefault();closeMenu();setTimeout(()=>document.getElementById('reservation').scrollIntoView({behavior:'smooth'}),300)">Reserve</a>
   <a href="#location" onclick="event.preventDefault();closeMenu();setTimeout(()=>document.getElementById('location').scrollIntoView({behavior:'smooth'}),300)">Visit</a>
   <!-- 모바일 Select Location -->
-  <div style="margin:16px 5% 8px;position:relative;">
+  <div style="margin:16px 5% 8px;position:relative;display:none;" class="mobile-select-loc">
     <button onclick="toggleMobileReserve(event)" style="width:100%;background:var(--brown);color:#fff;padding:14px;text-align:center;font-size:12px;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;">
       Select Location
       <svg id="mobileArr" width="10" height="6" viewBox="0 0 10 6" fill="none" style="transition:transform 0.2s;"><path d="M1 1L5 5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
